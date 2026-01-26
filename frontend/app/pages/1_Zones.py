@@ -5,7 +5,8 @@ import os
 API_URL = os.getenv("API_URL", "http://api:8000")
 
 st.title("📍 Zones")
-st.write("Gestión de zonas: filtrar, listar, crear, editar y eliminar.")
+st.write("Gestión de zonas: listar, filtrar, crear, editar y eliminar.")
+
 
 st.subheader("Filtros")
 
@@ -14,9 +15,7 @@ filter_active = st.selectbox(
     ["Todos", "Activos", "Inactivos"]
 )
 
-filter_ciudad = st.text_input("City")
-
-
+filter_borough = st.text_input("Borough")
 
 
 st.subheader("Ver Zones")
@@ -30,8 +29,8 @@ if st.button("Cargar Zones"):
         elif filter_active == "Inactivos":
             params["active"] = False
 
-        if filter_ciudad:
-            params["ciudad"] = filter_ciudad
+        if filter_borough:
+            params["borough"] = filter_borough
 
         response = requests.get(f"{API_URL}/zones", params=params)
 
@@ -52,18 +51,18 @@ st.divider()
 st.subheader("Crear nueva Zone")
 
 zone_id = st.number_input(
-    "ID",
+    "ID (TLC LocationID)",
     min_value=1,
     step=1
 )
-ciudad = st.text_input("Ciudad")
+borough = st.text_input("Borough (opcional)")
 zone_name = st.text_input("Zone Name")
 service_zone = st.text_input("Service Zone")
 
 if st.button("Crear Zone"):
     payload = {
         "id": int(zone_id),
-        "Ciudad": ciudad,
+        "borough": borough,
         "zone_name": zone_name,
         "service_zone": service_zone,
         "active": True
@@ -81,7 +80,6 @@ if st.button("Crear Zone"):
         st.error("Error conectando con el backend.")
 
 
-
 st.divider()
 st.subheader("Editar Zone")
 
@@ -92,14 +90,14 @@ edit_id = st.number_input(
     key="edit_zone_id"
 )
 
-edit_ciudad = st.text_input("Nueva Ciudad")
+edit_borough = st.text_input("Nuevo Borough")
 edit_zone_name = st.text_input("Nuevo Zone Name")
 edit_service_zone = st.text_input("Nuevo Service Zone")
 edit_active = st.checkbox("Activa", value=True)
 
 if st.button("Actualizar Zone"):
     payload = {
-        "borough": edit_ciudad,
+        "borough": edit_borough,
         "zone_name": edit_zone_name,
         "service_zone": edit_service_zone,
         "active": edit_active
@@ -118,8 +116,6 @@ if st.button("Actualizar Zone"):
 
     except Exception:
         st.error("Error conectando con el backend.")
-
-
 
 
 st.divider()

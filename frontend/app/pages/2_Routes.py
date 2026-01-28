@@ -7,9 +7,9 @@ API_URL = os.getenv("API_URL", "http://api:8000")
 st.title("🛣️ Routes")
 st.write("Gestión completa de rutas (CRUD).")
 
-# =========================
-# CARGAR ZONES
-# =========================
+
+
+
 def get_zones():
     try:
         r = requests.get(f"{API_URL}/zones")
@@ -26,9 +26,9 @@ zone_options = {
     for z in zones
 }
 
-# =========================
-# FILTROS
-# =========================
+
+
+
 st.subheader("Filtros")
 
 filter_active = st.selectbox(
@@ -46,9 +46,9 @@ filter_dropoff = st.selectbox(
     ["Todas"] + list(zone_options.keys())
 )
 
-# =========================
-# LISTAR ROUTES
-# =========================
+
+
+
 st.subheader("Ver Routes")
 
 if st.button("Cargar Routes"):
@@ -80,9 +80,11 @@ if st.button("Cargar Routes"):
     except Exception:
         st.error("No se pudo conectar con el backend.")
 
-# =========================
-# GET ROUTE POR ID
-# =========================
+
+
+
+
+
 st.divider()
 st.subheader("Buscar Route por ID")
 
@@ -105,9 +107,10 @@ if st.button("Buscar Route"):
     except Exception:
         st.error("Error conectando con el backend.")
 
-# =========================
-# CREAR ROUTE
-# =========================
+
+
+
+
 st.divider()
 st.subheader("Crear Route")
 
@@ -148,16 +151,15 @@ else:
             r = requests.post(f"{API_URL}/routes", json=payload)
 
             if r.status_code == 200:
-                st.success("✅ Route creada correctamente")
+                st.success("Route creada correctamente")
             else:
                 st.error(r.text)
 
         except Exception:
             st.error("Error conectando con el backend.")
 
-# =========================
-# EDITAR ROUTE
-# =========================
+
+
 st.divider()
 st.subheader("Editar Route")
 
@@ -199,16 +201,15 @@ if st.button("Actualizar Route"):
         )
 
         if r.status_code == 200:
-            st.success("✏️ Route actualizada")
+            st.success("Route actualizada")
         else:
             st.error(r.text)
 
     except Exception:
         st.error("Error conectando con el backend.")
 
-# =========================
-# ELIMINAR ROUTE
-# =========================
+
+
 st.divider()
 st.subheader("Eliminar Route")
 
@@ -224,7 +225,7 @@ if st.button("Eliminar Route"):
         r = requests.delete(f"{API_URL}/routes/{int(delete_id)}")
 
         if r.status_code == 204:
-            st.success("🗑️ Route eliminada correctamente")
+            st.success("Route eliminada correctamente")
         else:
             st.error(r.text)
 

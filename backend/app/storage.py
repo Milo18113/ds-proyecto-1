@@ -1,5 +1,3 @@
-from typing import Dict
-from .schemas import ZoneOut
-
-# Base de datos en memoria
-zones: Dict[int, ZoneOut] = {}
+zones = {}
+routes = {}
+next_route_id = 1

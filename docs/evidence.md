@@ -1,0 +1,6 @@
+![Evidencia de unión de rama backend-zones](image.png)   
+![Evidencia de creación de frontend](image-1.png)
+![Evidencia de archivos de frontend en repositorio](image-2.png)
+![Evidencia de front-end funcional](image-3.png)
+![Acceso al endpoint de health](image-4.png)
+![Ramas de desarrollo](image-5.png)

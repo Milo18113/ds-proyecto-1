@@ -1,7 +1,8 @@
 # Demand Prediction Service – PSet #1
 
 ## Descripción
-Este proyecto implementa una arquitectura básica de servicios para el PSet #1 del curso de Diseño de Sistemas de la Universidad San Francisco de Quito.
+Este proyecto implementa una arquitectura básica de servicios para el PSet #1 del curso de Diseño de Sistemas de la Universidad San Francisco de Quito.  
+Permite realizar operaciones de creación, modificación y eliminación de zonas y rutas mediante una interfaz de usuario, así como importar bases de datos a través de archivos Parquet.   
 Incluye:
 - Backend en FastAPI
 - Frontend en Streamlit

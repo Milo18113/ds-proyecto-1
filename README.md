@@ -1,4 +1,5 @@
 # Demand Prediction Service – PSet #1
+Desarrollado por Eduardo Cedeño, Jorge Marcillo, Pablo Galarza, Emilio Puga
 
 ## Descripción
 Este proyecto implementa una arquitectura básica de servicios para el PSet #1 del curso de Diseño de Sistemas de la Universidad San Francisco de Quito.  

@@ -150,7 +150,7 @@ else:
         try:
             r = requests.post(f"{API_URL}/routes", json=payload)
 
-            if r.status_code == 200:
+            if r.status_code == 201:
                 st.success("Route creada correctamente")
             else:
                 st.error(r.text)

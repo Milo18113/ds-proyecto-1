@@ -15,7 +15,7 @@ filter_active = st.selectbox(
     ["Todos", "Activos", "Inactivos"]
 )
 
-filter_borough = st.text_input("Borough")
+filter_borough = st.text_input("Borough", key="filter_borough")
 
 
 st.subheader("Ver Zones")
@@ -55,7 +55,7 @@ zone_id = st.number_input(
     min_value=1,
     step=1
 )
-borough = st.text_input("Borough (opcional)")
+borough = st.text_input("Borough",key="create_borough")
 zone_name = st.text_input("Zone Name")
 service_zone = st.text_input("Service Zone")
 
@@ -71,7 +71,7 @@ if st.button("Crear Zone"):
     try:
         response = requests.post(f"{API_URL}/zones", json=payload)
 
-        if response.status_code == 200:
+        if response.status_code == 201:
             st.success("✅ Zone creada correctamente")
         else:
             st.error(response.text)
